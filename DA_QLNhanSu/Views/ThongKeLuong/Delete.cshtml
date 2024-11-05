@@ -1,0 +1,76 @@
+﻿@model DA_QLNhanSu.Models.TblThongKeLuong
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Xóa Lương @Model.MaThangNavigation.TenThang Của Nhân Viên @Model.MaNvNavigation.HoTen </h1>
+
+<h3>Bạn có chắc muốn xóa không?</h3>
+<div>
+    <h4>TblThongKeLuong</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Lương Cơ Bản
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LuongCoBan)
+        </dd>
+        <dt class = "col-sm-2">
+            Thuế Phải Đóng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThuePhaiDong)
+        </dd>
+        <dt class = "col-sm-2">
+            Thưởng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Thuong)
+        </dd>
+        <dt class = "col-sm-2">
+            Bị Trừ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phat)
+        </dd>
+        <dt class = "col-sm-2">
+            Ghi Chú
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+        <dt class = "col-sm-2">
+           Tổng Lương
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TongLuong)
+        </dd>
+        <dt class = "col-sm-2">
+            Ngày tạo
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+        <dt class = "col-sm-2">
+            Tên Nhân Viên
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaNvNavigation.HoTen)
+        </dd class>
+        <dt class = "col-sm-2">
+            Tháng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaThangNavigation.TenThang)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MaTkluong" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

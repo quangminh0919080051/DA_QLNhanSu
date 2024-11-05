@@ -1,0 +1,142 @@
+﻿@model DA_QLNhanSu.Models.TblTtnhanVien
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://th.bing.com/th/id/R.c0c19473f9df9c0e1edbf4cd19e771ab?rik=EtkZNmbleCcFgQ&riu=http%3a%2f%2ftuyensinh.dainam.edu.vn%2fpic%2fSystemWebsite%2flogo-dai-nam636892871188011602.jpg&ehk=xtEg1U2SM9tf3Eg5wukFnfLjHZgz89k5hPQnMi%2fTszA%3d&risl=&pid=ImgRaw&r=0" rel="icon">
+    <title>Register</title>
+    <link href="~/assets/js/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/js/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/ruang-admin.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-login">
+    <!-- Register Content -->
+    <div class="container-login">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card shadow-sm my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="login-form">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Register</h1>
+                                    </div>
+                                    <form asp-action="Register">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label asp-for="HoTen">First Name</label>
+                                            <input asp-for="HoTen" type="text" class="form-control" id="exampleInputFirstName" placeholder="Nhập họ tên">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Ngày sinh</label>
+                                                    <input asp-for="NgaySinh" type="date" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label asp-for="GioiTinh" class="control-label"></label>
+                                                <select asp-for="GioiTinh" class="form-control">
+                                                    <option value="">--Chọn giới tính--</option>
+                                                    <option value="Nam">Nam</option>
+                                                    <option value="Nữ">Nữ</option>
+                                                    <option value="Khác">Khác</option>
+                                                </select>
+                                                <span asp-validation-for="GioiTinh" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>CMND</label>
+                                                    <input asp-for="Cmnd" type="number" class="form-control" placeholder="Nhập số CMND">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Điện thoại</label>
+                                                    <input asp-for="Sdt" type="number" class="form-control" placeholder="Nhập số điện thoại">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                                                           placeholder="Nhập email">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Dân tộc</label>
+                                                    <input asp-for="DanToc" type="text" class="form-control" placeholder="Bạn thuộc dân tộc nào">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nơi sinh</label>
+                                            <input asp-for="NoiSinh" type="text" class="form-control" placeholder="Nhập nơi sinh">
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="DiaChi">Địa chỉ</label>
+                                            <input asp-for="DiaChi" type="text" class="form-control" placeholder="Nhập địa chỉ hiện tại">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Password</label>
+                                                    <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Repeat Password</label>
+                                                    <input type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                        </div>
+                                        <hr>
+                                        <a href="index.html" class="btn btn-google btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Register with Google
+                                        </a>
+                                        <a href="index.html" class="btn btn-facebook btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                        </a>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="font-weight-bold small" asp-action="Login" asp-controller="Home">Quay lại đăng nhập</a>
+                                    </div>
+                                    <div class="text-center">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Content -->
+    <script src="~/assets/js/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/assets/js/ruang-admin.min.js"></script>
+</body>
+</html>
+

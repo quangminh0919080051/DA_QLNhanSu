@@ -1,0 +1,68 @@
+﻿@model DA_QLNhanSu.Models.TblLuong
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Danh Sách Bậc Lương</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Bảng Lương</li>
+        <li class="breadcrumb-item active" aria-current="page">Sửa</li>
+    </ol>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h4 class="m-0 font-weight-bold text-primary">Sửa bậc lương</h4>
+    </div>
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="MaLuong" />
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="MaCm" class="control-label">Chuyên môn</label>
+                <select asp-for="MaCm" class="form-control" asp-items="ViewBag.MaCm"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaTd" class="control-label">Trình độ</label>
+                <select asp-for="MaTd" class="form-control" asp-items="ViewBag.MaTd"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaDv" class="control-label">Đơn vị</label>
+                <select asp-for="MaDv" class="form-control" asp-items="ViewBag.MaDv"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuongCoBan" class="control-label">Lương cơ bản</label>
+                <input asp-for="LuongCoBan" class="form-control" />
+                <span asp-validation-for="LuongCoBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuongCbmoi" class="control-label">Thưởng</label>
+                <input asp-for="LuongCbmoi" class="form-control" />
+                <span asp-validation-for="LuongCbmoi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayNhap" class="control-label">Ngày tạo</label>
+                <input asp-for="NgayNhap" class="form-control" />
+                <span asp-validation-for="NgayNhap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgaySua" class="control-label">Ngày sửa</label>
+                <input asp-for="NgaySua" class="form-control" />
+                <span asp-validation-for="NgaySua" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GhiChu" class="control-label">Ghi chú</label>
+                <textarea asp-for="GhiChu" class="form-control"></textarea>
+                <span asp-validation-for="GhiChu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </div>
+    </form>
+</div>

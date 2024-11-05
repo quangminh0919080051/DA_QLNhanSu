@@ -1,0 +1,59 @@
+﻿@model DA_QLNhanSu.Models.TblLuong
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Danh Sách Bậc Lương</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Bảng Lương</li>
+        <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
+    </ol>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h4 class="m-0 font-weight-bold text-primary">Sửa bậc lương</h4>
+    </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="MaCm" class="control-label">Chuyên môn</label>
+            <input value="@Html.DisplayFor(model => model.MaCmNavigation.TenCm)" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="MaTd" class="control-label">Trình độ</label>
+            <input value="@Html.DisplayFor(model => model.MaTdNavigation.TenTrinhDo)" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="MaDv" class="control-label">Đơn vị</label>
+            <input value="@Html.DisplayFor(model => model.MaDvNavigation.TenDv)" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LuongCoBan" class="control-label">Lương cơ bản</label>
+            <input value="@Html.DisplayFor(model => model.LuongCoBan)" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LuongCbmoi" class="control-label">Thưởng</label>
+            <input value="@Html.DisplayFor(model => model.LuongCbmoi)" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayNhap" class="control-label">Ngày tạo</label>
+            <input value="@Html.DisplayFor(model => model.NgayNhap)" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NgaySua" class="control-label">Ngày sửa</label>
+            <input value="@Html.DisplayFor(model => model.NgaySua)" disabled class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="GhiChu" class="control-label">Ghi chú</label>
+            <textarea value="@Html.DisplayFor(model => model.GhiChu)" disabled class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+            <a asp-action="Edit" asp-route-id="@Model.MaLuong" class="btn btn-primary">Sửa Thông Tin</a>
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </div>
+</div>

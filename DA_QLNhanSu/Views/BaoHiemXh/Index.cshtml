@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DA_QLNhanSu.Models.TblBaoHiemXh>
+
+@{
+    ViewData["Title"] = "Bảo Hiểm Xã Hội";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Danh Sách Bảo Hiểm</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Bảo Hiểm</li>
+    </ol>
+</div>
+
+<!-- Row -->
+<div class="row">
+    <!-- Datatables -->
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Bảo Hiểm Xã Hội</h6>
+                <a asp-action="Create" class="btn btn-success">Thêm mới</a>
+            </div>
+            <div class="table-responsive p-3">
+                <table class="table align-items-center table-flush" id="dataTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Nơi đăng ký</th>
+                            <th>Nơi cấp</th>
+                            <th>Ngày cấp</th>
+                            <th>Ghi chú</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nơi đăng ký</th>
+                            <th>Nơi cấp</th>
+                            <th>Ngày cấp</th>
+                            <th>Ghi chú</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.NoiDkkcb</td>
+                                <td>@item.NoiCap</td>
+                                <td>@item.NgayCap</td>
+                                <td>@item.GhiChu</td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaBhxh">Xem</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

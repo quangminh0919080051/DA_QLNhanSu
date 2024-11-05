@@ -1,0 +1,100 @@
+﻿@model IEnumerable<DA_QLNhanSu.Models.TblTtnhanVien>
+
+@{
+    ViewData["Title"] = "Danh sách nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Danh Sách Nhân Viên</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Nhân viên</li>
+    </ol>
+</div>
+
+<!-- Row -->
+<div class="row">
+    <!-- Datatables -->
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Nhân viên</h6>
+                <a class="btn btn-primary" asp-action="Create">Thêm Mới</a>
+                @*<a asp-action="Create" class="btn btn-success">Thêm mới</a>*@
+                <a asp-action="ExportToExcel" asp-controller="NhanVien" class="btn btn-success">Xuất Excel</a>
+            </div>
+            <div class="table-responsive p-3">
+                <table class="table align-items-center table-flush" id="dataTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Ảnh</th>
+                            <th>Họ tên</th>
+                            <th>Đơn vị</th>
+                            <th>Chuyên môn</th>
+                            <th>Lương Cơ Bản</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Ảnh</th>
+                            <th>Họ tên</th>
+                            <th>Đơn vị</th>
+                            <th>Chuyên môn</th>
+                            <th>Lương Cơ Bản</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><img src="@item.Anh" alt="@item.HoTen" class="img-thumbnail" width="100"></td>
+                                <td>@item.HoTen</td>
+                                <td>@if (item.MaDv != null)
+                                    {
+                                        @item.MaDvNavigation.TenDv
+                                    } else
+                                    {
+                                        <p>"Trống"</p>
+                                    }
+                                </td>
+
+                                <td>
+                                    @if (@item.MaCm != null)
+                                    {
+                                        @item.MaCmNavigation.TenCm
+                                    }
+                                    else
+                                    {
+                                        <p>"Trống"</p>
+                                    }
+                                </td>
+                                <td>@if (@item.MaLuong != null)
+                                    {
+                                        @item.MaLuongNavigation.LuongCoBan
+                                    }
+                                    else
+                                    {
+                                        <p>"Trống"</p>
+                                    }
+                                </td>
+                                <td>@item.NgaySinh</td>
+                                <td>@item.GioiTinh</td>
+                                <td>
+                                    @*<a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.MaLuong">Sửa</a> |*@
+                                    <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaNv">Xem</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,139 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@model DA_QLNhanSu.Models.TblTtnhanVien
+
+@{
+    ViewData["Title"] = "Thông tin cá nhân";
+    Layout = null;
+}
+<title>@ViewData["Title"]</title>
+<link href="~/assets/js/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="~/assets/js/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="~/assets/js/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="~/assets/css/ruang-admin.min.css" rel="stylesheet">
+<script src="~/assets/js/vendor/jquery/jquery.min.js"></script>
+<script src="~/assets/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/js/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="~/assets/js/ruang-admin.min.js"></script>
+<script src="~/assets/js/vendor/datatables/jquery.dataTables.min.js"></script>
+<div class="container p-4">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Thông tin cá nhân</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Profile</li>
+    </ol>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h4 class="m-0 font-weight-bold text-primary">Xem thông tin</h4>
+    </div>
+    <form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="MaNv" />
+        <div class="card-body row">
+            <div class="form-group col-lg-12">
+                <label class="control-label">Ảnh đại diện</label>
+                <div class="text-center">
+                    <img src="@Model.Anh" class="rounded" alt="@Model.HoTen" width="250">
+                </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Họ và tên</label>
+                <input asp-for="HoTen" type="text" readonly class="form-control" />
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Ngày sinh</label>
+                <input asp-for="NgaySinh" type="date" readonly class="form-control" />
+                <span asp-validation-for="NgaySinh" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Chuyên môn</label>
+                <input asp-for="MaCmNavigation.TenCm" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Trình độ</label>
+                <input asp-for="MaTdNavigation.TenTrinhDo" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Đơn vị</label>
+                <input asp-for="MaDvNavigation.TenDv" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Lương cơ bản</label>
+                <input asp-for="MaLuongNavigation.LuongCoBan" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Thuế</label>
+                <input asp-for="MaThueNavigation.CoQuanQuanLyThue" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Bảo hiểm</label>
+                <input asp-for="MaBhxhNavigation.NoiDkkcb" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Dân tộc</label>
+                <input asp-for="DanToc" type="text" readonly class="form-control" />
+                <span asp-validation-for="DanToc" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Tôn giáo</label>
+                <input asp-for="TonGiao" readonly type="text" class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Quốc tịch</label>
+                <input asp-for="QuocTich" readonly type="text" class="form-control" />
+                <span asp-validation-for="QuocTich" class="text-danger"></span>
+
+            </div>
+            <div class="form-group col-lg-6">
+                <label asp-for="Cmnd" class="control-label">Số CMND</label>
+                <input asp-for="Cmnd" readonly class="form-control" />
+                <span asp-validation-for="Cmnd" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label asp-for="GioiTinh" class="control-label">Giới tính</label>
+                <input asp-for="GioiTinh" readonly class="form-control" />
+                <span asp-validation-for="GioiTinh" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Điện thoại</label>
+                <input asp-for="Sdt" readonly class="form-control" />
+                <span asp-validation-for="Sdt" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Email</label>
+                <input asp-for="Email" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-12">
+                <label asp-for="NoiSinh" class="control-label">Nơi sinh</label>
+                <input asp-for="NoiSinh" readonly class="form-control" />
+                <span asp-validation-for="NoiSinh" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-12">
+                <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+                <input asp-for="DiaChi" readonly class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-12">
+                <label asp-for="GhiChu" class="control-label">Ghi chú</label>
+                <textarea asp-for="GhiChu" readonly class="form-control"></textarea>
+                <span asp-validation-for="GhiChu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="Edit" asp-controller="UserDashboard" asp-route-id="@Model.MaNv" class="btn btn-primary">Sửa lại thông tin</a>
+                <a asp-action="ChangPassWord" asp-controller="UserDashboard" class="btn btn-danger">Đổi mật khẩu</a>
+                @if (HttpContextAccessor.HttpContext.Session.GetInt32("Role") == 1 || HttpContextAccessor.HttpContext.Session.GetInt32("Role") == 2)
+                {
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Quay lại</a>
+                } else
+                {
+                    <a asp-action="ThueCaNhan" asp-controller="HomeNV" class="btn btn-secondary">Quay lại</a>
+                }
+            </div>
+        </div>
+    </form>
+</div>
+</div>

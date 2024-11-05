@@ -1,0 +1,70 @@
+﻿@model DA_QLNhanSu.Models.TblTtnhanVien
+@{
+    ViewData["Title"] = "Thông Tin Bảo Hiểm";
+    Layout = "~/Views/Shared/_LayoutNV.cshtml";
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Thông Tin Bảo Hiểm</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Bảo Hiểm</li>
+    </ol>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    </div>
+    <form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="MaNv" />
+        <div class="card-body row">
+            <div class="form-group col-lg-6">
+                <label class="control-label">Họ và tên</label>
+                <input asp-for="HoTen" type="text" readonly class="form-control" />
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Ngày sinh</label>
+                <input asp-for="NgaySinh" type="date" readonly class="form-control" />
+                <span asp-validation-for="NgaySinh" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Chuyên môn</label>
+                <input asp-for="MaCmNavigation.TenCm" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Trình độ</label>
+                <input asp-for="MaTdNavigation.TenTrinhDo" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Đơn vị</label>
+                <input asp-for="MaDvNavigation.TenDv" readonly class="form-control" />
+            </div>
+            
+            <hr />
+            <div class="form-group col-lg-12">
+                <h4>Thông tin chi tiết bảo hiểm</h4>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Mã bảo hiểm</label>
+                <input asp-for="MaBhxh" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Nơi đăng ký</label>
+                <input asp-for="MaBhxhNavigation.NoiDkkcb" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Nơi cấp</label>
+                <input asp-for="MaBhxhNavigation.NoiCap" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Ngày cấp</label>
+                <input asp-for="MaBhxhNavigation.NgayCap" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="control-label">Ghi chú</label>
+                <textarea asp-for="MaBhxhNavigation.GhiChu" readonly class="form-control"></textarea>
+            </div>
+        </div>
+    </form>
+</div>

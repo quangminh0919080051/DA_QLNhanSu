@@ -1,0 +1,43 @@
+﻿@model DA_QLNhanSu.Models.TblDonVi
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Chi tiết Chuyên Môn</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Đơn Vị</li>
+        <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
+    </ol>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h4 class="m-0 font-weight-bold text-primary">Chi tiết Đơn vị</h4>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="control-label">ID</label>
+                    <input asp-for="@Model.MaDv" disabled class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tên chuyên môn</label>
+                    <input asp-for="@Model.TenDv" disabled class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Ghi chú</label>
+                    <textarea asp-for="@Model.GhiChu" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.MaDv" class="btn btn-primary">Sửa Thông Tin</a>
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

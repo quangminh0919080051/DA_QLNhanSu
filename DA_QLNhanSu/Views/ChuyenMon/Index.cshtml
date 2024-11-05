@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DA_QLNhanSu.Models.TblChuyenMon>
+
+@{
+    ViewData["Title"] = "Chuyên Môn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Danh Sách Chuyên Môn</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Bảo Hiểm</li>
+    </ol>
+</div>
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <!-- Simple Tables -->
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Bảng chuyên môn</h6>
+                <a class="btn btn-success" asp-action="Create">Thêm mới</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên chuyên môn</th>
+                            <th>Ghi chú</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model) {
+                        <tr>
+                            <td>@item.MaCm</td>
+                            <td>@item.TenCm</td>
+                            <td>@item.GhiChu</td>
+                            <td>
+                               <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaCm">Xem</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+</div>
+<!--Row-->

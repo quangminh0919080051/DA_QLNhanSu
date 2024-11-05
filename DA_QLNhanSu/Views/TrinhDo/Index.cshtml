@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DA_QLNhanSu.Models.TblTrinhDo>
+
+@{
+    ViewData["Title"] = "Trình Độ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Danh Sách Trình Độ</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Trình độ</li>
+    </ol>
+</div>
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <!-- Simple Tables -->
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Danh Sách Trình Độ</h6>
+                <a class="btn btn-success" asp-action="Create">Thêm mới</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên đơn vị</th>
+                            <th>Ghi chú</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaTd</td>
+                                <td>@item.TenTrinhDo</td>
+                                <td>@item.GhiChu</td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaTd">Xem</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+</div>
+<!--Row-->

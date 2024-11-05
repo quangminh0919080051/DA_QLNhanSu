@@ -1,0 +1,102 @@
+﻿@model IEnumerable<DA_QLNhanSu.Models.TblThongKeLuong>
+
+@{
+    ViewData["Title"] = "Thống kê lương";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DA_QLNhanSu.Models.QLNhanSuContext db = new DA_QLNhanSu.Models.QLNhanSuContext();
+    var thangs = db.TblThangs;
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Bảng Thống Kê Lương</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Thống kê lương</li>
+    </ol>
+</div>
+
+<!-- Row -->
+<div class="row">
+    <!-- Datatables -->
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Thống kê lương</h6>
+                <a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+                <!-- Button trigger modal -->
+                <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                    Xuất Excel
+                </a>
+                @*<a asp-action="ExportToExcel" asp-controller="ThongKeLuong" class="btn btn-success">Xuất Excel</a>*@
+            </div>
+            <div class="table-responsive p-3">
+                <table class="table align-items-center table-flush" id="dataTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Tháng</th>
+                            <th>Tên NV</th>
+                            <th>Lương Cơ Bản</th>
+                            <th>Thuế</th>
+                            <th>Thưởng</th>
+                            <th>Bị Trừ (Nếu có)</th>
+                            <th>Tổng Thực Nhận</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaThangNavigation.TenThang</td>
+                                <td>@item.MaNvNavigation.HoTen</td>
+                                <td>@item.LuongCoBan</td>
+                                <td>@item.ThuePhaiDong</td>
+                                <td>@item.Thuong</td>
+                                <td>@item.Phat</td>
+                                <td>@item.TongLuong</td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaTkluong">Xem</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Chọn Kiểu Xuất File</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <form asp-action="ExportToExcel">
+             <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label class="control-label">Chọn Tháng Xuất</label>
+                            <select id="MaThang" name="MaThang" class="form-control">
+                                <option value=0>--Xuất Theo Tháng--</option>
+                                <option value=0>Tất cả</option>
+                                @foreach (var item in thangs)
+                                {
+                                    <option value=@item.MaThang>@item.TenThang</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-12 mt-2">
+                            <input type="submit" class="btn btn-primary m-1" value="Xuất File" />
+                        </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>

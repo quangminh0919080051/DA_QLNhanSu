@@ -1,0 +1,108 @@
+﻿@model DA_QLNhanSu.Models.TblTtnhanVien
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Thuế Cá Nhân";
+    Layout = "~/Views/Shared/_LayoutNV.cshtml";
+    var role = HttpContextAccessor.HttpContext.Session.GetInt32("Role");
+}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Thông Tin Thuế Cá Nhân</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item">Thuế</li>
+    </ol>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    </div>
+    <form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="MaNv" />
+        <div class="card-body row">
+            <div class="form-group col-lg-6">
+                <label class="control-label">Họ và tên</label>
+                <input asp-for="HoTen" type="text" readonly class="form-control" />
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+            @if (role != null)
+            {
+                @if (role == 1)
+            {
+                <div class="form-group col-lg-6">
+                    <label class="control-label">Quyền - Chức vụ</label>
+                    <input value="Admin" type="text" readonly class="form-control" />
+                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                </div>
+            }
+                @if (role == 2)
+            {
+                <div class="form-group col-lg-6">
+                    <label class="control-label">Quyền - Chức vụ</label>
+                    <input value="Quản lý" type="text" readonly class="form-control" />
+                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                </div>
+            }
+                @if (role == 3)
+            {
+                <div class="form-group col-lg-6">
+                    <label class="control-label">Quyền - Chức vụ</label>
+                    <input value="Nhân viên" type="text" readonly class="form-control" />
+                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                </div>
+            }
+            }
+            <div class="form-group col-lg-6">
+                <label class="control-label">Ngày sinh</label>
+                <input asp-for="NgaySinh" type="date" readonly class="form-control" />
+                <span asp-validation-for="NgaySinh" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Chuyên môn</label>
+                <input asp-for="MaCmNavigation.TenCm" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Trình độ</label>
+                <input asp-for="MaTdNavigation.TenTrinhDo" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Đơn vị</label>
+                <input asp-for="MaDvNavigation.TenDv" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Bảo hiểm</label>
+                <input asp-for="MaBhxhNavigation.NoiDkkcb" readonly class="form-control" />
+            </div>
+            <hr/>
+            <div class="form-group col-lg-12">
+                <h4>Thông tin chi tiết thuế</h4>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Mã thuế</label>
+                <input asp-for="MaThueNavigation.MaThue" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Cơ quan quản lý</label>
+                <input asp-for="MaThueNavigation.CoQuanQuanLyThue" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Lương cơ bản</label>
+                <input asp-for="MaLuongNavigation.LuongCoBan" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Thuế phải đóng</label>
+                <input asp-for="MaThueNavigation.SoTien" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="control-label">Ngày đăng ký</label>
+                <input asp-for="MaThueNavigation.NgayDangKi" readonly class="form-control" />
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="control-label">Ghi chú</label>
+                <textarea asp-for="MaThueNavigation.GhiChu" readonly class="form-control"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
